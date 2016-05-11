@@ -21,12 +21,18 @@
     <ClInclude Include="I18n.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JsonReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="I18n.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
