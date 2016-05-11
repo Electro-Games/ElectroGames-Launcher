@@ -20,7 +20,15 @@ int main()
 
 		window.clear(Color(255, 255, 255 ,255));
 		//window.draw(shape);
+		/**
+		récupère la résolution horizontale de l'écran (HORZRES) et lui ajoute 240 
+		pour le positionnement
+		*/
 		int xPos = HORZRES + 240;
+		/**
+		récupère la résolution verticale de l'écran (VERTRES) et lui ajoute 150
+		pour le positionnement
+		*/
 		int yPos = VERTRES  + 150;
 		window.setPosition(Vector2i(xPos, yPos));
 		window.display();
