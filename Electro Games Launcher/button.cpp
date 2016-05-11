@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 
 using namespace sf;
+using namespace std;
 /**
   buttonID: id du bouton (ex: 1) pour définir des actions par boutons
   texture: définir la texture depuis une image dans le disque
@@ -10,9 +11,11 @@ using namespace sf;
   width: largeur du bouton
   height: hauteur du bouton
 */
-button::button(int buttonID, Texture texture, int Xpos, int Ypos, int width, int height)
+button::button(int buttonID, String FilePath, int Xpos, int Ypos, int width, int height)
 {
-    texture.loadFromFile("", IntRect(Xpos, Ypos, width, height));
+	Texture texture;
+    texture.loadFromFile(FilePath, IntRect(Xpos, Ypos, width, height));
+	Sprite sprite;
 	sprite.setTexture(texture, true);
 
 }
