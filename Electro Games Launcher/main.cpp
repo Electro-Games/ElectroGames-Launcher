@@ -6,7 +6,8 @@ using namespace sf;
 using namespace std;
 int main()
 {
-	RenderWindow window(VideoMode(800, 400), "Electro-Games Launcher");
+	String LauncherVersion = "1.0.0";
+	RenderWindow window(VideoMode(800, 400), "Electro-Games Launcher " + LauncherVersion);
 	//sf::CircleShape shape(100.f);
 	//shape.setFillColor(sf::Color::Green);
 	while (window.isOpen())
