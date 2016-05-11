@@ -2,6 +2,9 @@
 #include "main.h"
 #include <windows.h>
 #include <iostream>
+#include "button.h";
+
+
 using namespace sf;
 using namespace std;
 int main()
