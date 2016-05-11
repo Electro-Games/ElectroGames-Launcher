@@ -1,7 +1,9 @@
 #include <SFML\Graphics.hpp>
 #include "main.h"
-
+#include <windows.h>
+#include <iostream>
 using namespace sf;
+using namespace std;
 int main()
 {
 	RenderWindow window(VideoMode(800, 400), "Electro-Games Launcher");
@@ -18,6 +20,9 @@ int main()
 
 		window.clear(Color(255, 255, 255 ,255));
 		//window.draw(shape);
+		int xPos = HORZRES + 240;
+		int yPos = VERTRES  + 150;
+		window.setPosition(Vector2i(xPos, yPos));
 		window.display();
 	}
 
