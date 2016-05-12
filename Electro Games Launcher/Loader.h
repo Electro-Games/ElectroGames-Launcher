@@ -6,6 +6,6 @@ public:
 	Loader();
 	~Loader();
 	int LoadImageFile(sf::String filePath);
-	int LoadImageBtn(sf::String filePath, int rectLeft, int rectTop, int rectWidth, int rectHeight);
+	int LoadImageFile(sf::String filePath, int rectLeft, int rectTop, int rectWidth, int rectHeight);
 };
 

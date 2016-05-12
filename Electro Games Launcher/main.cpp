@@ -28,7 +28,7 @@ int main()
 	int yPos = VERTRES + 150;
 	window.setPosition(Vector2i(xPos, yPos));
 	Loader loader;
-	loader.LoadImageFile("test.png");
+	loader.LoadImageFile("test.png", 10, 10 ,10 ,10);
 	//button PlayBtn = button::button(0, "textures\play_fr.png", 0, 0, 100, 200);
 	while (window.isOpen())
 	{
