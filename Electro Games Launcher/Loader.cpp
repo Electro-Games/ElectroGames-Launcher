@@ -14,13 +14,13 @@ Loader::~Loader()
 /*
 EN TEST
 */
-int Loader::LoadImageBtn(sf::String filePath, int rectLeft, int rectTop, int rectWidth, int rectHeight)
+int Loader::LoadImageFile(sf::String filePath, int rectLeft, int rectTop, int rectWidth, int rectHeight)
 {
 	sf::Texture texture;
-	 
+	texture.loadFromFile(filePath, sf::IntRect(rectLeft, rectTop, rectWidth, rectHeight));
 	if (!texture.loadFromFile(filePath, sf::IntRect(rectLeft, rectTop, rectWidth, rectHeight)))
 	{
-		// erreur...
+		std::cout << "[ERROR]" + filePath.toAnsiString() + " not found!" << std::endl;
 	}
 }
 
@@ -30,6 +30,6 @@ int Loader::LoadImageFile(sf::String filePath)
 	texture.loadFromFile(filePath);
 	if (!texture.loadFromFile(filePath))
 	{
-		std::cout << filePath.toAnsiString() + " not found!" << std::endl;
+		std::cout << "[ERROR]" + filePath.toAnsiString() + " not found!" << std::endl;
 	}
 }
