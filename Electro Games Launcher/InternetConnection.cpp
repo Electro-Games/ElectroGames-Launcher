@@ -4,7 +4,6 @@
 #include <iostream>
 #include <sstream>
 
-//using namespace std;
 using namespace sf;
 using namespace std;
 namespace ElectroGamesConnectivity {
@@ -25,6 +24,6 @@ namespace ElectroGamesConnectivity {
 		{
 			MessageBox(0, "Oups ! Il semble que vous ne soyez pas connecter à internet", "Erreur réseau", 0);
 		}
-		std::cout << Address.toString() << endl;
+		cout << Address.toString() << endl;
 	}
 }
