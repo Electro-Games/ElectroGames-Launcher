@@ -3,9 +3,11 @@
 #include <windows.h>
 #include <iostream>
 #include "Loader.h"
+#include "InternetConnection.h"
 
 using namespace sf;
 using namespace std;
+using namespace ElectroGamesConnectivity;
 int main()
 {
 	String LauncherVersion = "1.0.0";
@@ -29,7 +31,8 @@ int main()
 	window.setPosition(Vector2i(xPos, yPos));
 	Loader loader;
 	loader.LoadImageFile("test.png", 10, 10 ,10 ,10);
-	//button PlayBtn = button::button(0, "textures\play_fr.png", 0, 0, 100, 200);
+	InternetConnection connection;
+	connection.isConnected();
 	while (window.isOpen())
 	{
 		Event event;
