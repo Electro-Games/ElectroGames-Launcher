@@ -22,7 +22,9 @@ namespace ElectroGamesConnectivity {
 		sf::IpAddress Address = sf::IpAddress::getPublicAddress();
 		if (Address == Address.None)
 		{
-			MessageBox(0, "Oups ! Il semble que vous ne soyez pas connecter à internet", "Erreur réseau", 0);
+			MessageBeep(0xFFFFFFFF);
+			MessageBox(0, "Oups ! Il semble que vous ne soyez pas connecter à internet. \n Le launcher est utilisable " 
+				"hors-ligne mais vous ne pourrez pas télécharger ni jouer en multijoueur.", "Erreur réseau", 0);
 		}
 		cout << Address.toString() << endl;
 	}
