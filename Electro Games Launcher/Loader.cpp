@@ -2,6 +2,7 @@
 #include "SFML\Graphics.hpp"
 #include <iostream>
 
+
 Loader::Loader()
 {
 }
@@ -24,12 +25,36 @@ int Loader::LoadImageFile(sf::String filePath, int rectLeft, int rectTop, int re
 	}
 }
 
-int Loader::LoadImageFile(sf::String filePath)
+__declspec(deprecated("** this is a deprecated function **")) int Loader::LoadImageFile(sf::String filePath)
 {
 	sf::Texture texture;
 	texture.loadFromFile(filePath);
 	if (!texture.loadFromFile(filePath))
 	{
 		std::cout << "[ERROR]" + filePath.toAnsiString() + " not found!" << std::endl;
+	}
+	else
+	{
+		std::cout << filePath.toAnsiString() << " found" << std::endl;
+		//sf::RenderWindow window;
+		//sf::Sprite sprite;
+		//sprite.setTexture(texture, true);
+		//window.draw(sprite);
+	}
+}
+
+sf::Texture Loader::sprite(sf::String filePath)
+{
+	sf::Texture texture;
+	texture.loadFromFile(filePath);
+	if (!texture.loadFromFile(filePath))
+	{
+		std::cout << "[ERROR]" + filePath.toAnsiString() + " not found!" << std::endl;
+	}
+	else
+	{
+		std::cout << filePath.toAnsiString() << " found" << std::endl;
+	return texture;
+		
 	}
 }

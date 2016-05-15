@@ -1,53 +1,56 @@
-#include <SFML\Graphics.hpp>
-#include "main.h"
-#include <windows.h>
-#include <iostream>
-#include "Loader.h"
+// Include standard headers
+#include <stdio.h>
+#include <stdlib.h>
+// Include GLEW. Always include it before gl.h and glfw.h, since it's a bit magic.
+#include <GL/glew.h>
+// Include GLFW
+#include <GLFW\glfw3.h>
+// Include GLM
+#include <glm\glm.hpp>
+//Include Connection Check
 #include "InternetConnection.h"
-
-using namespace sf;
-using namespace std;
+using namespace glm;
 using namespace ElectroGamesConnectivity;
-int main()
-{
-	String LauncherVersion = "1.0.0";
-	RenderWindow window(VideoMode(800, 400), "Electro-Games Launcher " + LauncherVersion);
-	//sf::CircleShape shape(100.f);
-	//shape.setFillColor(sf::Color::Green);
-	//window.draw(shape);
-	sf::RectangleShape rect;
-	rect.setFillColor(Color::Magenta);
-	rect.setSize(Vector2f(200, 200));
-	/**
-	récupère la résolution horizontale de l'écran (HORZRES) et lui ajoute 240
-	pour le positionnement
-	*/
-	int xPos = HORZRES + 240;
-	/**
-	récupère la résolution verticale de l'écran (VERTRES) et lui ajoute 150
-	pour le positionnement
-	*/
-	int yPos = VERTRES + 150;
-	window.setPosition(Vector2i(xPos, yPos));
-	Loader loader;
-	loader.LoadImageFile("test.png", 10, 10 ,10 ,10);
-	InternetConnection connection;
-	connection.isConnected();
-	while (window.isOpen())
+int main() {
+	InternetConnection connectionCheck;
+	connectionCheck.isConnected();
+	// Initialise GLFW
+	if (!glfwInit())
 	{
-		Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == Event::Closed)
-				window.close();
-		}
-		
-		window.draw(rect);
-		window.clear(Color(255, 255, 255 ,255));
-		window.display();
+		fprintf(stderr, "Failed to initialize GLFW\n");
+		return -1;
 	}
+	glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
 
-	return 0;
+																   // Open a window and create its OpenGL context
+	GLFWwindow* window; // (In the accompanying source code, this variable is global)
+	window = glfwCreateWindow(800, 600, "Electro-Games Launcher", NULL, NULL);
+	if (window == NULL) {
+		fprintf(stderr, "Impossible d'ouvrir le programme ! Si vous avez un GPU intel ils ne sont pas compatibles avec OpenGL 3 et supérieur\n");
+		glfwTerminate();
+		return -1;
+	}
+	glfwMakeContextCurrent(window); // Initialize GLEW
+	glewExperimental = true; // Needed in core profile
+	if (glewInit() != GLEW_OK) {
+		fprintf(stderr, "Failed to initialize GLEW\n");
+		return -1;
+	}
+	// Ensure we can capture the escape key being pressed below
+	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+
+	do {
+		// Draw nothing, see you in tutorial 2 !
+
+		// Swap buffers
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+
+	} // Check if the ESC key was pressed or the window was closed
+	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
+		glfwWindowShouldClose(window) == 0);
 }
-
-	
